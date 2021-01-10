@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="Description" content="Enter your description here" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <!-- VueJs CDN -->
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <title>Title</title>
+  </head>
+  <body>
+    <h1>whats ma duuude</h1>
+
+    <div id="app">
+      <!-- attripute binding -->
+      <a v-bind:href="url">best website ever</a>
+
+      <br />
+      <br />
+      <br />
+      {{ title }} - {{ author }} - {{ age }}
+
+      <button v-on:click="age++">Increase Age</button>
+      <button v-on:click="age--">Decrease Age</button>
+      <!-- <div @click="title = 'something else'">lmao</div> -->
+      <!-- <div @click="changeTitle">lmao</div> -->
+      <div @click="changeTitle('Oathbringer')">lmao</div>
+      <br />
+      <br />
+      <br />
+      <div class="" v-if="showBooks">
+        {{ title }} - {{ author }} - {{ age }}
+        <div class="">
+          <ul>
+            <li v-for="book in books">
+              <img :src="book.img" v-bind:alt="book.title" />
+              <h3>{{book.title}}</h3>
+              <p>{{book.author}}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <button @click="toggleShowBooks">
+        <span v-if="showBooks">hide books</span>
+        <!-- <span v-if="!showBooks">show books</span> -->
+        <span v-else="showBooks">show books</span>
+      </button>
+
+      <!-- v-if erases data completely from the dom #### v-show is setting css from block to none-->
+
+      <div class="" v-show="showBooks">currently showing books</div>
+      <div class="">
+        <div class="box" @mouseover="handleEvent($event, 5)">
+          mouseover (enter)
+        </div>
+        <div class="box" @mouseleave="handleEvent">mouseleave</div>
+        <div class="box" @dblclick="handleEvent">doubleclick</div>
+        <div class="box" @mousemove="handleMousemove">
+          <p>position X: {{x}}</p>
+          <p>position Y: {{y}}</p>
+        </div>
+      </div>
+      <div class=""></div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.min.js"></script>
+  </body>
+</html>
