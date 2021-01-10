@@ -11,17 +11,20 @@ const app = Vue.createApp({
                 {
                     title: 'name of the wind',
                     author: 'patrick rothfuss',
-                    img: '../assets/img1.JPG'
+                    img: '../assets/img1.JPG',
+                    isFav: true
                 },
                 {
                     title: 'the way of kings',
                     author: 'brandon sanderson',
-                    img: '../assets/img1.jpg'
+                    img: '../assets/img1.jpg',
+                    isFav: false
                 },
                 {
                     title: 'the final empire',
                     author: 'brandon sanderson',
-                    img: '../assets/img3.jpg'
+                    img: '../assets/img3.jpg',
+                    isFav: true
                 }
             ],
             age: 25,
@@ -45,6 +48,21 @@ const app = Vue.createApp({
             this.y = e.offsetY
             console.log("Y-Axis: ", this.y, " ", "X-Axis: ", this.x)
             // console.log("x: ", x, "/br", "y: ", y)
+        },
+        toggleFav(book) {
+            // console.log(book)
+            // console.log(this.isFav)
+            // if (book.isFav === false) {
+            //     book.isFav = true
+            // } else {
+            //     book.isFav = false
+            // }
+            book.isFav = !book.isFav
+        }
+    },
+    computed: {
+        filteredBooks() {
+            return this.books.filter((book)=> book.isFav)
         }
     }
 })
