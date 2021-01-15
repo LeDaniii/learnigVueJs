@@ -1,12 +1,27 @@
 <template>
 <h1>Whats up ma duude</h1>
+<button @click="start" :disabled="isPlaying">play</button>
+<Block v-if="isPlaying" :delay="delay"/>
 </template>
 
 <script>
-
+import Block from './components/Block.vue'
 export default {
   name: 'App',
-  components: {  }
+  components: { Block },
+  data() {
+    return {
+      isPlaying: false,
+      delay: null
+    }
+  },
+  methods: {
+    start(){
+      this.delay = 2000 + Math.random() * 5000
+      this.isPlaying = true
+      console.log(this.delay)
+    }
+  }
 }
 </script>
 
